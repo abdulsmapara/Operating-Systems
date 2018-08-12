@@ -22,7 +22,7 @@ function stdcp(){
         if test read -r line
         then
           echo $line > $2
-        fi
+        fi < $1
         while read -r line
         do
           echo $line >> $2
