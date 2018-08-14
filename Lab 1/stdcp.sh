@@ -1,12 +1,12 @@
 #OS Lab 1 dt. 9th Aug 2018
 #For stdcp to be a custom command for cp, copy paste the code below in ~/.bashrc
-
-
+#----------ABDUL SATTAR MAPARA-------------#
+#----------BT16CSE053----------------------#
 function stdcp(){
   let num=2
   if test "$#" -ne $num #exactly 2 arguments required
   then
-    if test "$#" < $num
+    if [ $# -lt $num ]
     then
       echo "Too few arguments to stdcp"
     else
@@ -19,13 +19,18 @@ function stdcp(){
     else
       if [ -f $1 ] #check if 1st file exists
       then
-        if test read -r line
-        then
-          echo $line > $2
-        fi < $1
+		let i=0
+		let zero=0
+		let one=1
         while read -r line
         do
-          echo $line >> $2
+		  if [ $i == $zero ]
+		  then
+			echo $line > $2
+			i=`expr $i+$one`
+		  else	
+          	echo $line >> $2
+		  fi
         done < $1
       else
         echo "File Not Found"
